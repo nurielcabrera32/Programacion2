@@ -1,0 +1,35 @@
+# Algebra
+# Version 1.0
+# Cabrera Nuriel
+
+class EcuacionLineal:
+    
+    def __init__(self, a, b, c, d, e, f):
+        self.__a = a
+        self.__b = b
+        self.__c = c
+        self.__d = d
+        self.__e = e
+        self.__f = f
+
+    def tiene_solucion(self):
+        return (self.__a * self.__d - self.__b * self.__c) != 0
+
+    def get_x(self):
+        return (self.__e * self.__d - self.__b * self.__f) / (self.__a * self.__d - self.__b * self.__c)
+
+    def get_y(self):
+        return (self.__a * self.__f - self.__e * self.__c) / (self.__a * self.__d - self.__b * self.__c)
+
+# PROGRAMA DE PRUEBA
+
+if __name__ == "__main__":
+
+    a, b, c, d, e, f = map(float, input("Ingrese a, b, c, d, e, f: ").split())
+
+    ecuacion = EcuacionLineal(a, b, c, d, e, f)
+
+    if ecuacion.tiene_solucion():
+        print("x =", ecuacion.get_x(), ", y =", ecuacion.get_y())
+    else:
+        print("La ecuación no tiene solución")

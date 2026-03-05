@@ -1,0 +1,46 @@
+# Estadistica
+# Version 1.0
+# Cabrera Nuriel
+import math
+
+# PARTE MODULAR        
+
+def promedio(datos):
+    return sum(datos) / len(datos)
+
+def desviacion(datos):
+    prom = promedio(datos)
+    suma = sum((x - prom)**2 for x in datos)
+    return math.sqrt(suma / (len(datos) - 1))
+
+# PARTE POO
+
+class Estadistica:
+    
+    def __init__(self, datos):
+        self.__datos = datos
+
+    def promedio(self):
+        return sum(self.__datos) / len(self.__datos)
+
+    def desviacion(self):
+        prom = self.promedio()
+        suma = sum((x - prom)**2 for x in self.__datos)
+        return math.sqrt(suma / (len(self.__datos) - 1))
+
+# PROGRAMA DE PRUEBA
+
+if __name__ == "__main__":
+
+    datos = list(map(float, input("Ingrese 10 números: ").split()))
+
+    # Versión modular
+    print("=== Versión Modular ===")
+    print("Promedio:", promedio(datos))
+    print("Desviación estándar:", desviacion(datos))
+
+    # Versión POO
+    print("\n=== Versión POO ===")
+    estadistica = Estadistica(datos)
+    print("Promedio:", estadistica.promedio())
+    print("Desviación estándar:", estadistica.desviacion())
